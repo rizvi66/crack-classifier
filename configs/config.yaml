@@ -1,0 +1,13 @@
+data_dir: /kaggle/input/datasets/arunrk7/surface-crack-detection  
+output_dir: /kaggle/working/outputs   # weights go here, NOT in the repo
+results_dir: results
+seed: 42
+img_size: 224
+batch_size: 64
+num_workers: 2
+epochs: 8
+freeze_epochs: 2      # must be >= 1
+lr_head: 0.001
+lr_finetune: 0.0001
+val_size: 0.15
+test_size: 0.15
