@@ -28,7 +28,8 @@ class GradCAM:
 
     def _forward_hook(self, module, inputs, output):
         self.activations = output
-        output.register_hook(self._save_gradient)
+        if output.requires_grad:          # skip during torch.no_grad() inference
+            output.register_hook(self._save_gradient)
 
     def _save_gradient(self, grad):
         self.gradients = grad
