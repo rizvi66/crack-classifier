@@ -1,7 +1,11 @@
 # Concrete Crack Classifier
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-ResNet--18-ee4c2c)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 Binary image classification (crack/no crack) of concrete surfaces using transfer learning with ResNet-18 in PyTorch.
 
-**Status:** in progress
+**Status:** baseline complete. Generalisation testing planned (see Issues).
 
 #Motivation
 Manual inspection of concrete structures is slow and subjective. This project explores how a pretrained CNN can detedt surface cracks automatically.
@@ -14,6 +18,27 @@ Concrete crack images for classification (~40,000 images, 227x227 px, two classe
 -`src/` reusable training code
 -`configs/` hyperparameters
 -`results/` plots and metrics
+
+## How to reproduce
+1. Create a Kaggle notebook with a GPU accelerator and Internet on.
+2. Add the "Surface Crack Detection" dataset as an input.
+3. Clone this repo and install requirements:
+   ```bash
+   git clone https://github.com/rizvi66/crack-classifier.git
+   cd crack-classifier
+   pip install -r requirements.txt
+   ```
+4. Set `data_dir` in `configs/config.yaml` to the folder containing `Positive/` and `Negative/`.
+5. Train and evaluate:
+   ```bash
+   python src/train.py --config configs/config.yaml
+   ```
+6. Generate Grad-CAM heatmaps:
+   ```bash
+   python src/gradcam.py --weights /path/to/best.pt
+   ```
+
+Training takes a few minutes on a Kaggle T4/P100 GPU. Weights are not stored in the repo.
 
 ## Results
 ## Results
