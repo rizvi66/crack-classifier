@@ -32,3 +32,6 @@ Overall test accuracy: **99.95%** (3 errors out of 6,000: 3 false alarms, 0 miss
 
 ### Limitations
 The dataset consists of patches cropped from a small number of large photographs. A random split can place patches from the same photograph in both train and test sets, so these scores are likely optimistic. Performance on images from new structures, cameras or lighting conditions has not yet been measured.
+
+
+**Observations:** On the 6,000-image test set, 3 images were misclassified (all labelled "no crack" but predicted "crack"). Grad-CAM shows the model's attention on dark, linear features in these images; in at least two of them a crack-like line is visible, suggesting possible label noise in the dataset rather than a model failure. One prediction was low-confidence (0.575). Manual inspection of the original images is needed to confirm.
