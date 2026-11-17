@@ -99,6 +99,9 @@ def main(cfg_path, weights, n_examples):
     errors = [s for s, p in zip(test_s, preds) if p != s[1]]
     print(f"{len(errors)} misclassified images in test set")
 
+    for path, label in errors:
+        print("  ", path, "| true:", CLASS_NAMES[label])
+
     rng = random.Random(cfg["seed"])
     ok_crack = [s for s, p in zip(test_s, preds) if s[1] == 1 and p == 1]
     ok_clean = [s for s, p in zip(test_s, preds) if s[1] == 0 and p == 0]
